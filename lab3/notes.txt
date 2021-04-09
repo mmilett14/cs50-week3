@@ -1,0 +1,8 @@
+sort1 - random5000 - 0.059s - 0.075s - 0.061s
+sort2 - random5000 - 0.011s - 0.012s - 0.013s
+sort3 - random5000 - 0.038s - 0.037s - 0.035s
+
+sort1 - reversed5000 - 0.100s - 0.086s - 0.133s
+sort2 - reversed5000 - 0.013s - 0.012s - 0.013s
+sort3 - reversed5000 - 0.033s - 0.036s - 0.033s
+
