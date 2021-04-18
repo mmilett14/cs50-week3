@@ -72,14 +72,16 @@ int main(int argc, string argv[])
 bool vote(string name)
 {
 
+    // loops through each vote by the number of candidates (not correct), needs to loop through until match is found, then escape loop
     for (int i = 0; i < candidate_count; i++)
     {
         printf("%s\n", name);
         printf("%s\n", candidates[i].name);
-        if (name == candidates[i].name)
+        if (strcmp(name, candidates[i].name) == 0)  // there is an issue here. do i need a different operator?
         {
             printf("match\n");
             candidates[i].votes++;
+            printf("votes: %i\n", candidates[i].votes);
 
             return true;
         }
