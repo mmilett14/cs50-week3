@@ -67,44 +67,44 @@ int main(int argc, string argv[])
 // Update vote totals given a new vote
 bool vote(string name)
 {
-    int i=-1;
 
-    do {
-        i++;
-        printf("%s\n", name);
-        printf("%s\n", candidates[i].name);
+    // loops through each vote
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // add 1 to the candidate's vote total, if the name matches one from the candidates list
         if (strcmp(name, candidates[i].name) == 0)
         {
-            printf("match\n");
             candidates[i].votes++;
-            printf("votes: %i\n", candidates[i].votes);
-
             return true;
         }
-    } while (strcmp(name, candidates[i].name) != 0);
-
-    // loops through each vote by the number of candidates (not correct), needs to loop through until match is found, then escape loop
-    // for (int i = 0; i < candidate_count; i++)
-    // {
-    //     printf("%s\n", name);
-    //     printf("%s\n", candidates[i].name);
-    //     if (strcmp(name, candidates[i].name) == 0)
-    //     {
-    //         printf("match\n");
-    //         candidates[i].votes++;
-    //         printf("votes: %i\n", candidates[i].votes);
-
-    //         return true;
-    //     }
-
-    // }
+        // if name does not find a match, return false
+    }
     return false;
 }
 
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
-    // TODO
+    // find the winning number of votes
+    int votes_win = 0;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // update the votes_win variable, if a candidate has more votes than what the varaible was previously set to
+        if (candidates[i].votes > votes_win)
+        {
+            votes_win = candidates[i].votes;
+        }
+    }
+
+    // find the winner
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // print the name of the winner, if their vote total matches the winning vote total
+        if (candidates[i].votes == votes_win)
+        {
+            printf("%s\n", candidates[i].name);
+        }
+    }
     return;
 }
 
