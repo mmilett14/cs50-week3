@@ -57,10 +57,6 @@ int main(int argc, string argv[])
         {
             printf("Invalid vote.\n");
         }
-        else
-        {
-            vote(name);
-        }
 
     }
 
@@ -71,13 +67,13 @@ int main(int argc, string argv[])
 // Update vote totals given a new vote
 bool vote(string name)
 {
+    int i=-1;
 
-    // loops through each vote by the number of candidates (not correct), needs to loop through until match is found, then escape loop
-    for (int i = 0; i < candidate_count; i++)
-    {
+    do {
+        i++;
         printf("%s\n", name);
         printf("%s\n", candidates[i].name);
-        if (strcmp(name, candidates[i].name) == 0)  // there is an issue here. do i need a different operator?
+        if (strcmp(name, candidates[i].name) == 0)
         {
             printf("match\n");
             candidates[i].votes++;
@@ -85,10 +81,23 @@ bool vote(string name)
 
             return true;
         }
-    }
+    } while (strcmp(name, candidates[i].name) != 0);
 
+    // loops through each vote by the number of candidates (not correct), needs to loop through until match is found, then escape loop
+    // for (int i = 0; i < candidate_count; i++)
+    // {
+    //     printf("%s\n", name);
+    //     printf("%s\n", candidates[i].name);
+    //     if (strcmp(name, candidates[i].name) == 0)
+    //     {
+    //         printf("match\n");
+    //         candidates[i].votes++;
+    //         printf("votes: %i\n", candidates[i].votes);
 
-    // TODO
+    //         return true;
+    //     }
+
+    // }
     return false;
 }
 
