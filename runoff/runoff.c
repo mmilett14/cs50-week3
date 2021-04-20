@@ -135,8 +135,7 @@ bool vote(int voter, int rank, string name)
             // add 1 to the candidate's vote total, if the name matches one from the candidates list
             if (strcmp(name, candidates[j].name) == 0)
             {
-                preferences[i][rank - 1] = j;
-                printf("%i\n", preferences[i][rank-1]);
+                preferences[voter][rank] = j;
                 return true;
             }
         }
