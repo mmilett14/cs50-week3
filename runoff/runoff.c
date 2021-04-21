@@ -128,7 +128,7 @@ int main(int argc, string argv[])
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
 {
-    for (int i = 0; i < voter_count; i++)
+    for (int i = 0; i < voter_count; i++) // might not need this. delete?
     {
         for (int j = 0; j < candidate_count; j++)
         {
@@ -148,21 +148,47 @@ bool vote(int voter, int rank, string name)
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    // TODO
+    for (int i = 0; i < voter_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if(candidates[j].eliminated == false)
+            {
+                candidates[j].votes++;
+            }
+
+        }
+    }
+
+
     return;
 }
 
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    // TODO
+    for (i = 0; i < candidate_count; i++)
+    {
+        if(candidates[i].votes > (voter_count / 2))
+        {
+            printf("%s\n", candidates[i].name);
+            return true;
+        }
+    }
     return false;
 }
 
 // Return the minimum number of votes any remaining candidate has
 int find_min(void)
 {
-    // TODO
+    int min_votes = 0;
+    for (i = 0; i < candidate_count; i++)
+    {
+        if(candidates[i].eliminated == false)
+        {
+            // implement alg to find min vote
+        }
+    }
     return 0;
 }
 
