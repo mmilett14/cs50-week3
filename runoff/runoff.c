@@ -21,6 +21,17 @@ candidate;
 // Array of candidates
 candidate candidates[MAX_CANDIDATES];
 
+// Non-eliminated candidates have name, vote count
+typedef struct
+{
+    string name;
+    int votes;
+}
+cand_non_elim;
+
+// Array of candidates
+cand_non_elim cand_non_elims[MAX_CANDIDATES];
+
 // Numbers of voters and candidates
 int voter_count;
 int candidate_count;
@@ -198,6 +209,19 @@ int find_min(void)
 // Return true if the election is tied between all candidates, false otherwise
 bool is_tie(int min)
 {
+    int tie_votes = 0;
+
+    for (int i = 0, j = 0; i < candidate_count; i++)
+    {
+        if(candidates[i].eliminated == false)
+        {
+            cand_non_elims[j].name = candidates[i].name;
+            cand_non_elims[j].votes = candidates[i].votes;
+        }
+    }
+
+    // now, need to iterate through cand_non_elims to see if their vote totals match
+
     // TODO
     return false;
 }
