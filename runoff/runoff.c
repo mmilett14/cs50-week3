@@ -211,7 +211,6 @@ bool is_tie(int min)
     int tie_votes = 0;
     int tied_cands = 0;
 
-
     for (int i = 0, j = 0; i < candidate_count; i++)
     {
         if(candidates[i].eliminated == false)
@@ -228,20 +227,25 @@ bool is_tie(int min)
     {
         if(candidates[i].eliminated == false)
         {
+            if(candidates[i].votes != tie_votes)
+            {
+                return false;
+            }
+
             if(candidates[i].votes == tie_votes)
             {
-                cand_ties[i].name == candidates[i].name;
+                cand_ties[i].name = candidates[i].name;
                 tied_cands++;
             }
         }
         return tied_cands;
     }
 
-    if(tied_cands > 1)
+    if(tied_cands >= 1)
     {
         for (int i = 0; i < tied_cands; i++)
         {
-            printf("%s\n", cand_ties[i]);
+            printf("%s\n", cand_ties[i].name);
         }
         return true;
     }
