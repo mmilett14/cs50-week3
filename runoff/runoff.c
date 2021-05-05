@@ -162,14 +162,15 @@ void tabulate(void)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            if(candidates[j].eliminated == false)
+            // NEED TO break out of this loop once a vote has been tallied
+            if(candidates[preferences[i][j]].eliminated == false)
             {
-                candidates[j].votes++;
+                candidates[preferences[i][j]].votes++;
+                break;
             }
 
         }
     }
-
 
     return;
 }
@@ -202,7 +203,7 @@ int find_min(void)
             }
         }
     }
-    return 0;
+    return min_votes;
 }
 
 // Return true if the election is tied between all candidates, false otherwise
@@ -238,7 +239,7 @@ bool is_tie(int min)
                 tied_cands++;
             }
         }
-        return tied_cands;
+        //return tied_cands;
     }
 
     if(tied_cands >= 1)
